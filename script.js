@@ -8,10 +8,10 @@ let storageOfRep = [];
 input.addEventListener('input',debounce((event) =>{
     const query = event.target.value;
 
-    if(input.value === '' || input.value.trim()){
+    if(input.value === '' || !input.value.trim()){
         autocomplit.innerHTML = '';
     }
-    console.log(event);
+    
     if (query && input.value.trim()){
         getRepositories(`${query}`)
             .then(acc => showAutocomplete(...acc))
@@ -48,7 +48,7 @@ function showAutocomplete(...repositories) {
     const data = repositories.slice(0, 5);
     storageOfRep = data; 
     autocomplit.innerHTML = '';
-    console.log(data);
+    
     data.map((person)=>{
         const li = document.createElement('li');
         li.id = person.id;
